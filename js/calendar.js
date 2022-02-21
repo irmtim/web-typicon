@@ -19,7 +19,7 @@ function hMenu() { if ($('#menu').is(":visible")) { $('#menu').hide() } }
 function getCookie(n) { var matches = document.cookie.match(new RegExp("(?:^|; )" + n.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)")); return matches ? decodeURIComponent(matches[1]) : undefined; }
 function setCookie(n, v, d) { d = d || 30; var sd = new Date(Date.now() + d * 864e5); sd = sd.toUTCString(); document.cookie = n + '=' + v + '; expires=' + sd; }
 $(document).ready(function () {
-	DarkLighter.init();
+	
 	var fmin = 2, fmax = 10, fprev, tags = $('#info,#text,.font-size-value');
 	hram = document.getElementById('hr').selectedIndex;
 	if (lang = getCookie('lang')) $('#lang').val(lang); else lang = $('#lang').val() || 'csluni';
@@ -30,6 +30,7 @@ $(document).ready(function () {
 		if (fsize > 1) tags.toggleClass('f' + fsize);
 	} else fsize = fprev = 1;
 	if (save = getCookie('save')) { $('#save')[0].checked = true; setCookie('save', true); setCookie('lang', lang); setCookie('wr', wr); setCookie('bg', bg); }
+	DarkLighter.init(save);
 	var $sv1 = $('#sv1'), $sv2 = $('#sv2'), $zn1 = $('#zn1'), $zn2 = $('#zn2'), $hr = $('#hr'), $pov1 = $('#pov1'), $pov2 = $('#pov2'),
 		style = document.getElementById('newstyle').checked, jdn = newJdn(today, style), cal = new Calendar(style); cal.change(jdn);
 	$('#scrollup').fadeOut(0);
@@ -117,7 +118,7 @@ $(document).ready(function () {
 	$("#wr").on("change", function () { wr = $(this).val(); if (save) setCookie('wr', wr); wrall(wr); return false });
 	$("#save").change(function () {
 		var tmp = { 'save': save, 'lang': lang, 'wr': wr };
-		if (this.checked) { save = true; for (var k in tmp) setCookie(k, tmp[k]); } else { save = false; for (var k in tmp) document.cookie = k + '=; max-age=-1;' }
+		if (this.checked) { save = true; for (var k in tmp) setCookie(k, tmp[k]); DarkLighter.saveState() } else { save = false; for (var k in tmp) { document.cookie = k + '=; max-age=-1;'}; DarkLighter.clearState() }
 	});
 	$("body").on("change", "#sv1,#sv2", function () {
 		var zn = $(this).children(':selected').attr('z') || 1, x = $(this).attr('zn') == 1 ? 1 : 2, y = x == 1 ? 2 : 1, sv = $(this).val(), oth1 = '';

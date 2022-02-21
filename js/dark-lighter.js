@@ -1,43 +1,36 @@
 var DarkLighter = function () {
 
-	const items =
-		[
-			{
-				id: "#theme-link",
-				light: "css/index.css",
-				dark: "css/index.dark.css"
-			}
-		];
+    var withCookies = false;
 
-	var setLight = function () {
+    const lightTheme = {
+        id: "#theme-link",
+        cssLink: "css/index.css",
+        cookie: "light",
+        text: "Светлая",
+        checked: false
+    };
 
-		for (let i = 0; i < items.length; i++) {
-			const elem = document.querySelector(items[i].id);
-			elem.href = items[i].light;
-		}
+    const darkTheme = {
+        id: "#theme-link",
+        cssLink: "css/index.dark.css",
+        cookie: "dark",
+        text: "Темная",
+        checked: true
+    };
 
-		setCookie("theme", "light");
+    var setTheme = function(theme) {
+        const elem = document.querySelector(theme.id);
+        elem.href = theme.cssLink;
+
+        if (withCookies) {
+            setCookie("theme", theme.cookie);
+        }
 
         var label = document.querySelector('#switch-label');
-        label.innerHTML = "Светлая";
+        label.innerHTML = theme.text;
         var checkbox = document.querySelector('input[name=theme]');
-        checkbox.checked = false;
-	}
-
-	var setDark = function () {
-
-		for (let i = 0; i < items.length; i++) {
-			const elem = document.querySelector(items[i].id);
-			elem.href = items[i].dark;
-		}
-
-		setCookie("theme", "dark");
-        
-        var label = document.querySelector('#switch-label');
-        label.innerHTML = "Темная";
-        var checkbox = document.querySelector('input[name=theme]');
-        checkbox.checked = true;
-	}
+        checkbox.checked = theme.checked;
+    }
 	
 	var checkPreferences = function () {
 		var theme = getCookie("theme");
@@ -45,16 +38,16 @@ var DarkLighter = function () {
 			const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
 			if (prefersDarkScheme.matches) {
-				setDark();
+				setTheme(darkTheme);
 			} else {
-				setLight();
+				setTheme(lightTheme);
 			}
         }
         else if (theme === "light") {
-            setLight();
+            setTheme(lightTheme);
         }
         else {
-            setDark();
+            setTheme(darkTheme);
         }
     }
 
@@ -66,10 +59,10 @@ var DarkLighter = function () {
         checkbox.addEventListener('change', function() {
             if(this.checked) {
                 trans()
-                setDark();
+                setTheme(darkTheme);
             } else {
                 trans()
-                setLight();
+                setTheme(lightTheme);
             }
         })
 	}
@@ -83,8 +76,18 @@ var DarkLighter = function () {
 	
 	return {
 		// public functions
-		init: function () {
+		init: function (cookies) {
+            withCookies = (cookies !== 'undefined') && cookies;
 			assign();
 		},
+
+        saveState: function() {
+            var checkbox = document.querySelector('input[name=theme]');
+            setCookie("theme", (checkbox.checked) ? "dark" : "light");
+        },
+
+        clearState: function() {
+            document.cookie = 'theme=; max-age=-1;'
+        }
 	};
 }();
