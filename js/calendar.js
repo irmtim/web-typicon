@@ -418,7 +418,7 @@ function Calendar(st) {
 		if ((dbp < 71 || dap < 58) && men[mt = dbp < dap ? 'dbp' + dbp : 'dap' + dap]) {
 			mt = men[mt] ? men[mt] : mt; if (mt.z) zt = mt.z; else if (mt.f && mt.f.z) zt = mt.f.z
 		} else mt = null;
-		// $('#text').html(news); 
+		$('#text').html(news); 
 		$('#sv1,#sv2,#zn1,#zn2').removeClass().removeAttr('disabled');
 		if (m1) $('#sv1,#zn1').addClass(color[m1.z]); if (m2) $('#sv2,#zn2').addClass(color[m2.z]);
 		function rang(r) { switch (r) { case 'prGd': r = 7; break; case 'B': case 'prB': r = 6; break; case 'Krst': r = 5; break; case 'ott': r = 4; break; case 'svv': r = 4; break; case 'angl': r = 3; break; case 'Ioan': r = 2; break; case 'IoakAn': r = 1.5; break; default: r = 1 }return r }
