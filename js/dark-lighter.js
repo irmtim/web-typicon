@@ -20,6 +20,8 @@ var DarkLighter = function () {
 
         var label = document.querySelector('#switch-label');
         label.innerHTML = "Светлая";
+        var checkbox = document.querySelector('input[name=theme]');
+        checkbox.checked = false;
 	}
 
 	var setDark = function () {
@@ -33,6 +35,8 @@ var DarkLighter = function () {
         
         var label = document.querySelector('#switch-label');
         label.innerHTML = "Темная";
+        var checkbox = document.querySelector('input[name=theme]');
+        checkbox.checked = true;
 	}
 	
 	var checkPreferences = function () {
