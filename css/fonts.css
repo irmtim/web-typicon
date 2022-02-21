@@ -1,0 +1,24 @@
+@font-face {
+	font-family: 'Ponomar Unicode';
+	src: url('/fonts/PonomarUnicode.eot');
+	src: local('Ponomar Unicode'), local('PonomarUnicode'),
+		url('/fonts/PonomarUnicode.eot?#iefix') format('embedded-opentype'),
+		url('/fonts/PonomarUnicode.woff2') format('woff2'),
+		url('/fonts/PonomarUnicode.woff') format('woff'),
+		url('/fonts/PonomarUnicode.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Indiction Unicode';
+	src: url('/fonts/IndictionUnicode.eot');
+	src: local('Indiction Unicode'), local('IndictionUnicode'),
+		url('/fonts/IndictionUnicode.eot?#iefix') format('embedded-opentype'),
+		url('/fonts/IndictionUnicode.woff2') format('woff2'),
+		url('/fonts/IndictionUnicode.woff') format('woff'),
+		url('/fonts/IndictionUnicode.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}

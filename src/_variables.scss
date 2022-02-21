@@ -1,0 +1,30 @@
+//body
+$body-bg:                                               if(isDarkMode(), #1c1c21, #fff);
+$body-color:                                            if(isDarkMode(), #bfbfbf, #000000);
+
+//calendar
+$cal-bg:                                                if(isDarkMode(), #5c99d6, #39f);
+$cal-td-bg:                                             if(isDarkMode(), #1c1c21, #fff);
+$gray-light:                                            if(isDarkMode(), #2b2b2b, #eee);
+
+$gray:                                                  if(isDarkMode(), #4d4d4d, #ccc);
+$red:                                                   if(isDarkMode(), #cc3333, red);
+$red-hover:                                             if(isDarkMode(), #a32929, #c00);
+
+$great-othermonth:                                      if(isDarkMode(), #441010, #fee);
+
+$common-hover:                                          if(isDarkMode(), #664b00, #ffe);
+
+$dead:                                                  if(isDarkMode(), #350d35, #fef);
+$dead-hover:                                            if(isDarkMode(), #521452, #fcf);
+
+$black:                                                 if(isDarkMode(), #bfbfbf, black);
+$white:                                                 if(isDarkMode(), #bfbfbf, #fff);
+
+$alert-border:                                          if(isDarkMode(), #521414, #fcc);
+
+$show-bg:                                               if(isDarkMode(), #134e13, #cfffcf);
+$show-hover-bg:                                         if(isDarkMode(), #cc9633, orange);
+
+$blue:                                     if(isDarkMode(), #9999e6, #00e);
+$blue-hover:                                     if(isDarkMode(), #9999e6, #006);
